@@ -25,7 +25,6 @@ def main():
 
 def test():
     authors = list(full_name.fullname_dict.keys())
-    print(authors)
     jumanpp_wakati.auth_wakati_mkdir('tanaka')
     wakati_dir(my_path.project_path()+'src/original_txt/akuta_txt/「仮面」の人々.txt', 'tanaka')
 

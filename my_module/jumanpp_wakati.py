@@ -2,7 +2,6 @@ import re, os, sys, math
 from pyknp.juman.juman import Juman
 from collections import Counter
 
-import term_public_func
 import word_slice, my_path
 
 
