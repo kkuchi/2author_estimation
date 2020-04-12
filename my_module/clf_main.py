@@ -3,7 +3,7 @@ import numpy as np
 #import pandas as pd
 from imblearn.over_sampling import SMOTE
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensenble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier
 
 import my_path
 
@@ -72,7 +72,7 @@ bigram_label = [
 '''
 
 with open(my_path.project_path()+
-'classification/source/source_hinsi_list.txt', mode="rb") as f:
+'classification/source/source_hinsi_per.txt', mode="rb") as f:
     source_data_hinsi = pickle.load(f)
 
 with open(my_path.project_path()+
@@ -137,7 +137,7 @@ def k_cross_val(source_, k_, option_='tree'):
     #source_をランダムに並べ替え
     random.shuffle(source_)
     #配列をk_個に分ける
-    splitted_source = np.arrray_split(source_, k_)
+    splitted_source = np.array_split(source_, k_)
     #option_で分類モデル変更
     if option_ == 'tree':
         clf = DecisionTreeClassifier()
@@ -231,17 +231,17 @@ def get_mean(result_, opt_):
 入力
 data_option_ = hinsi or bigram
 authors_ = 著者ペア
-mode_option_ = 決定木(tree) or ランダムフォレスト(forest)
-sample_option_ = そのまま(plain) or アップサンプリング(up)
 k_ = 交差検証の回数
 pre_tar_option_ = 混同行列用のデータ出力をするかどうか(True/False)
+mode_option_ = 決定木(tree) or ランダムフォレスト(forest)
+sample_option_ = そのまま(plain) or アップサンプリング(up)
 '''
 '''
 出力
 pre_tar_無し：{s: mean_score, i: mean_imp}
 pre_tar_あり：{s: mean_score, i: mean_imp}, [{pre, tar}*k_]
 '''
-def classify(data_option_, authors_, mode_option_='tree', sample_option_='plain', k_, pre_tar_option_=False):
+def classify(data_option_, authors_, k_, pre_tar_option_=False, model_option_='tree', sample_option_='plain'):
     #data_option_に応じてsource_を設定
     if data_option_ == 'hinsi':
         source_ = copy.deepcopy(source_data_hinsi)
