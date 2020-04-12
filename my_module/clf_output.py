@@ -67,7 +67,3 @@ def print_pre_tar(pre_tar_):
         print('--------------------')
         out = tabulate(i, out_header, tablefmt='grid')
         print(out)
-
-
-#---------------------------------------------
-#ファイル保存する関数
