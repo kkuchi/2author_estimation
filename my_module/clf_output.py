@@ -1,5 +1,8 @@
 from tabulate import tabulate
 
+#printする関数
+
+#正答率、重要度をprint
 def print_mean(mean_result_, opt_=None):
     #mean_result_[s]から正答率をprint
     #小数点以下3桁
@@ -64,3 +67,7 @@ def print_pre_tar(pre_tar_):
         print('--------------------')
         out = tabulate(i, out_header, tablefmt='grid')
         print(out)
+
+
+#---------------------------------------------
+#ファイル保存する関数
