@@ -9,6 +9,8 @@ def main():
         for opt in opts:
             edit_feature.add_auth_source(auth, opt)
 
+#tri-gramのsrcをラベルの順に並べ替え
+#labelはtrigram_orderから
 def add_tri():
     edit_feature.init_source_trigram()
     authors = list(full_name.fullname_dict.keys())
