@@ -9,4 +9,11 @@ def main():
         for opt in opts:
             edit_feature.add_auth_source(auth, opt)
 
-main()
+def add_tri():
+    edit_feature.init_source_trigram()
+    authors = list(full_name.fullname_dict.keys())
+    opt = 'trigram'
+    for auth in authors:
+        edit_feature.add_auth_source(auth, opt)
+
+add_tri()

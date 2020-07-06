@@ -1,5 +1,7 @@
 import pickle, my_path
 
+import trigram_order
+
 #特徴量のデータ
 source_path = my_path.project_path()+'src/feature/'
 #分類用のデータ保存先
@@ -10,6 +12,9 @@ with open(source_path+'hinsi_per.txt', mode="rb") as f:
 
 with open(source_path+'bigram_per.txt', mode="rb") as f:
     source_bigram_dict = pickle.load(f)
+
+with open(source_path+'trigram_per.txt', mode="rb") as f:
+    source_trigram_dict = pickle.load(f)
 
 hinsi_label = [
     '名詞', '接尾辞', '助詞', '動詞', '特殊',
@@ -91,6 +96,8 @@ def sort_feature(auth_, opt_):
         auth_booklist = make_feature_list(source_hinsi_dict[auth_], hinsi_label)
     elif opt_ == 'bigram':
         auth_booklist = make_feature_list(source_bigram_dict[auth_], bigram_label)
+    elif opt_ == 'trigram':
+        auth_booklist = make_feature_list(source_trigram_dict[auth_], trigram_order.label_tri)
 
     return auth_booklist
 
@@ -100,6 +107,8 @@ def add_auth_source(auth_, opt_):
         load_path = dump_path+'source_hinsi_per.txt'
     elif opt_ == 'bigram':
         load_path = dump_path+'source_hinsi_bigram.txt'
+    elif opt_ == 'trigram':
+        load_path = dump_path+'source_hinsi_trigram.txt'
 
     #既存のデータ読み込み
     with open(load_path, mode="rb") as f:
@@ -117,4 +126,8 @@ def init_source():
     with open(dump_path+'source_hinsi_per.txt', mode="wb") as f:
         pickle.dump({}, f)
     with open(dump_path+'source_hinsi_bigram.txt', mode="wb") as f:
+        pickle.dump({}, f)
+
+def init_source_trigram():
+    with open(dump_path+'source_hinsi_trigram.txt', mode="wb") as f:
         pickle.dump({}, f)
