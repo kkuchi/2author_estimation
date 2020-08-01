@@ -1,5 +1,5 @@
 import term_public_func
-import clf_pair, clf_main, clf_output, my_path, full_name
+import clf_pair, clf_main, clf_output, my_path, full_name, clf_tri
 import pickle
 
 #結果を要約して保存する関数
@@ -79,4 +79,20 @@ def main(data_opt_):
     #結果の要旨をテキストで保存する関数
     write_res_view(all_result, data_opt_, 5)
 
-main('bigram')
+def main_tri():
+    print('使用特徴量： 品詞3-gram出現率')
+
+    key_pairs = clf_pair.name_pair()
+    all_result = {}
+    for pair in key_pairs:
+        result, confusion = clf_tri.classify_trigram(pair, 5, True, 'forest', 'up')
+        all_result['-'.join(pair)] = {'res': result, 'con': confusion}
+
+    with open(my_path.project_path() + 'classification/result/res_trigram_raw.txt', mode="wb") as f:
+        pickle.dump(all_result, f)
+
+    write_res_view(all_result, 'trigram', 5)
+
+#main('bigram')
+
+main_tri()
