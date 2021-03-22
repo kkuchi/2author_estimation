@@ -1,4 +1,4 @@
-import term_public_func
+import my_module
 import hinsi_count, full_name
 
 def add_auth_f(auth_):

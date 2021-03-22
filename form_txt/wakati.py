@@ -1,5 +1,5 @@
 import os
-import term_public_func
+import my_module
 import full_name, my_path, word_slice, jumanpp_wakati
 
 def wakati_dir(path, author):

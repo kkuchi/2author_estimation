@@ -1,4 +1,4 @@
-import term_public_func
+import my_module
 
 import edit_feature
 from copy import deepcopy

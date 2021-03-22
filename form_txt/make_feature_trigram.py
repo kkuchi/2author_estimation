@@ -1,4 +1,4 @@
-import term_public_func
+import my_module
 import trigram_feature, full_name
 
 def main():

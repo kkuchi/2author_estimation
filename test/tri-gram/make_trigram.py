@@ -1,6 +1,6 @@
 import os
 from collections import Counter
-import term_public_func
+import my_module
 
 import my_path, edit_feature
 

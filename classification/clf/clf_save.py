@@ -1,4 +1,4 @@
-import term_public_func
+import my_module
 import clf_pair, clf_main, clf_output, my_path, full_name, clf_tri
 import pickle
 
